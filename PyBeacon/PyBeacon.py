@@ -16,6 +16,7 @@
 """
 Python script for scanning and advertising urls over Eddystone-URL.
 """
+
 import re
 import os
 import signal
@@ -23,9 +24,11 @@ import subprocess
 import sys
 import time
 import argparse
-from . import __version__
 from pprint import pprint
 from enum import Enum
+
+from . import __version__
+
 
 application_name = 'PyBeacon'
 version = __version__ + 'beta'
@@ -175,6 +178,7 @@ def encodeMessage(data, beacon_type=Eddystone.url):
     return message
 
 def decodeUrl(encodedUrl):
+    
     """
     Decode a url encoded with the Eddystone (or UriBeacon) URL encoding scheme
     """
@@ -190,6 +194,7 @@ def decodeUrl(encodedUrl):
 
 
 def resolveUrl(url):
+    
     """
     Follows redirects until the final url is found.
     """
@@ -232,6 +237,7 @@ def resolveUrl(url):
 
 
 def onUrlFound(url):
+    
     """
     Called by onPacketFound, if the packet contains a url.
     """
